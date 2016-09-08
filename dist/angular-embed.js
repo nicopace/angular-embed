@@ -42,11 +42,11 @@
     .directive('ngEmbed', ['embedService',function (embedService) {
       return {
         restrict: 'AEC',
-        controller: function($scope, $element, $attrs){
+        controller: ['$scope', '$element', '$attrs', function($scope, $element, $attrs){
           embedService.get($attrs.url?$attrs.url:$attrs.ngEmbed).then(function(data){
             $element.html(data.html);
           });
-        }
+        }]
       };
     }]);
 })();
